@@ -1,29 +1,38 @@
 # paas-the-test
-PaaS - /etc/passwd and /etc/groups REST API
+### PaaS - /etc/passwd and /etc/groups REST API
 
-GET /users
+This service is written using python and is made for testing purposes only.
+
+I hold no responsibility over how you use it. This software is licensed under the GNU General Public License (GPL).
+
+# API Methods
+### GET /users
+
 Return a list of all users on the system, as defined in the /etc/passwd file.
-Example Response:
-[
-{“name”: “root”, “uid”: 0, “gid”: 0, “comment”: “root”, “home”: “/root”,
-“shell”: “/bin/bash”},
-{“name”: “dwoodlins”, “uid”: 1001, “gid”: 1001, “comment”: “”, “home”:
-“/home/dwoodlins”, “shell”: “/bin/false”}
-]
-GET
-/users/query[?name=<nq>][&uid=<uq>][&gid=<gq>][&comment=<cq>][&home=<
-hq>][&shell=<sq>]
-Return a list of users matching all of the specified query fields. The bracket notation indicates that any of the
-following query parameters may be supplied:
-- name
-- uid
-- gid
-- comment
-- home
 
-- shell
-Only exact matches need to be supported.
+Example Response:
+    [
+        {“name”: “root”, “uid”: 0, “gid”: 0, “comment”: “root”, “home”: “/root”,
+        “shell”: “/bin/bash”},
+        {“name”: “dwoodlins”, “uid”: 1001, “gid”: 1001, “comment”: “”, “home”:
+        “/home/dwoodlins”, “shell”: “/bin/false”}
+    ]
+
+### GET /users/query[?name=<nq>][&uid=<uq>][&gid=<gq>][&comment=<cq>][&home=<hq>][&shell=<sq>]
+
+Return a list of users matching all of the specified query fields. The bracket notation indicates that any of the following query parameters may be supplied:
+
++ name
++ uid
++ gid
++ comment
++ home
++ shell
+
+Only exact matches are supported.
+
 Example Query: GET /users/query?shell=%2Fbin%2Ffalse
+
 Example Response:
 [
 {“name”: “dwoodlins”, “uid”: 1001, “gid”: 1001, “comment”: “”, “home”:
