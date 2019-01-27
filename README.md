@@ -14,20 +14,20 @@ Example Response:
 
     [
         {
-            “name”: “root”,
-            “uid”: 0,
-            “gid”: 0,
-            “comment”: “root”,
-            “home”: “/root”,
-            “shell”: “/bin/bash”
+            "name": "root",
+            "uid": 0,
+            "gid": 0,
+            "comment": "root",
+            "home": "/root",
+            "shell": "/bin/bash"
         },
         {
-            “name”: “dwoodlins”,
-            “uid”: 1001,
-            “gid”: 1001,
-            “comment”: “”,
-            “home”: “/home/dwoodlins”,
-            “shell”: “/bin/false”
+            "name": "dwoodlins",
+            "uid": 1001,
+            "gid": 1001,
+            "comment": "",
+            "home": "/home/dwoodlins",
+            "shell": "/bin/false"
         }
     ]
 
@@ -50,12 +50,12 @@ Example Response:
 
     [
         {
-            “name”: “dwoodlins”,
-            “uid”: 1001,
-            “gid”: 1001,
-            “comment”: “”,
-            “home”: “/home/dwoodlins”,
-            “shell”: “/bin/false”
+            "name": "dwoodlins",
+            "uid": 1001,
+            "gid": 1001,
+            "comment": "",
+            "home": "/home/dwoodlins",
+            "shell": "/bin/false"
         }
     ]
 
@@ -66,12 +66,12 @@ Return a single user with <uid>. Return 404 if <uid> is not found.
 Example Response:
 
     {
-        “name”: “dwoodlins”,
-        “uid”: 1001,
-        “gid”: 1001,
-        “comment”: “”,
-        “home”: “/home/dwoodlins”,
-        “shell”: “/bin/false”
+        "name": "dwoodlins",
+        "uid": 1001,
+        "gid": 1001,
+        "comment": "",
+        "home": "/home/dwoodlins",
+        "shell": "/bin/false"
     }
 
 ### GET /users/<uid>/groups
@@ -82,10 +82,10 @@ Example Response:
 
     [
         {
-            “name”: “docker”,
-            “gid”: 1002,
-            “members”: [
-                “dwoodlins”
+            "name": "docker",
+            "gid": 1002,
+            "members": [
+                "dwoodlins"
             ]
         }
     ]
@@ -98,16 +98,16 @@ Example Response:
 
     [
         {
-            “name”: “_analyticsusers”,
-            “gid”: 250,
-            “members”: [
-                “_analyticsd’,”_networkd”,”_timed”
+            "name": "_analyticsusers",
+            "gid": 250,
+            "members": [
+                "_analyticsd’,"_networkd","_timed"
             ]
         },
         {
-            “name”: “docker”, 
-            “gid”: 1002, 
-            “members”: []
+            "name": "docker", 
+            "gid": 1002, 
+            "members": []
         }
     ]
 
@@ -127,12 +127,12 @@ Example Response:
 
     [
         {
-            “name”: “_analyticsusers”,
-            “gid”: 250,
-            “members”: [
-                “_analyticsd’,
-                ”_networkd”,
-                ”_timed”
+            "name": "_analyticsusers",
+            "gid": 250,
+            "members": [
+                "_analyticsd’,
+                "_networkd",
+                "_timed"
             ]
         }
     ]
@@ -144,9 +144,9 @@ Return a single group with <gid>. Return 404 if <gid> is not found.
 Example Response:
 
     {
-        “name”: “docker”,
-        “gid”: 1002,
-        “members”: [
-            “dwoodlins”
+        "name": "docker",
+        "gid": 1002,
+        "members": [
+            "dwoodlins"
         ]
     }
