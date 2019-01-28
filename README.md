@@ -31,7 +31,7 @@ Example Response:
         }
     ]
 
-### GET /users/query[?name=&lt;nq&rt;][&uid=&lt;uq&rt;][&gid=&lt;gq&rt;][&comment=&lt;cq&rt;][&home=&lt;hq&rt;][&shell=&lt;sq&rt;]
+### GET /users/query[?name=&lt;nq>][&uid=&lt;uq>][&gid=&lt;gq>][&comment=&lt;cq>][&home=&lt;hq>][&shell=&lt;sq>]
 
 Return a list of users matching all of the specified query fields. The bracket notation indicates that any of the following query parameters may be supplied:
 
@@ -59,9 +59,9 @@ Example Response:
         }
     ]
 
-### GET /users/&lt;uid&rt;
+### GET /users/&lt;uid>
 
-Return a single user with &lt;uid&rt;. Return 404 if &lt;uid&rt; is not found.
+Return a single user with &lt;uid>. Return 404 if &lt;uid> is not found.
 
 Example Response:
 
@@ -74,7 +74,7 @@ Example Response:
         "shell": "/bin/false"
     }
 
-### GET /users/&lt;uid&rt;/groups
+### GET /users/&lt;uid>/groups
 
 Return all the groups for a given user.
 
@@ -111,7 +111,7 @@ Example Response:
         }
     ]
 
-### GET /groups/query[?name=&lt;nq&rt;][&gid=&lt;gq&rt;][&member=&lt;mq1&rt;[&member=&lt;mq2&rt;][&...]]
+### GET /groups/query[?name=&lt;nq>][&gid=&lt;gq>][&member=&lt;mq1>[&member=&lt;mq2>][&...]]
 
 Return a list of groups matching all of the specified query fields. The bracket notation indicates that any of the following query parameters may be supplied:
 
@@ -137,9 +137,9 @@ Example Response:
         }
     ]
 
-### GET /groups/&lt;gid&rt;
+### GET /groups/&lt;gid>
 
-Return a single group with &lt;gid&rt;. Return 404 if &lt;gid&rt; is not found.
+Return a single group with &lt;gid>. Return 404 if &lt;gid> is not found.
 
 Example Response:
 
