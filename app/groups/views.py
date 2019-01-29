@@ -4,14 +4,23 @@ from app.helpers import response
 
 groups = Blueprint('groups', __name__)
 
+# Declare the file location
+file = "/etc/groups"
+
+# Return all the groups from /etc/groups
 @groups.route('/groups/', methods=['GET'])
 def getgroups():
-    """
-    Return all the groups in /etc/groups
-    :return:
-    """
+    file_object = open(file, 'r')
+    contents = {}
 
-    return response('success', '', 200)
+    for line in file_object:
+        line = line.strip()
+        fields = line.split(":")
+        contents[fields[0]] = fields[-1]
+    
+    file_object.close()
+
+    return response('success', contents, 200)
 
 @groups.route('/groups/<gid>', methods=['GET'])
 def getgroup(gid):
