@@ -56,6 +56,7 @@ def getgroup(gid):
 
     if (found):
         return response('group found', group, 200)
+        
     return response('group not found', gid, 404)
 
 @groups.route('/groups/query', methods=['GET'])
