@@ -32,8 +32,9 @@ def getgroups():
 # Return a single group by group id from /etc/groups
 @groups.route('/groups/<gid>', methods=['GET'])
 def getgroup(gid):
-    found = None
-    groupline = []
+    found = False
+    group = {}
+
     file_object = open(file, 'r')
 
     for line in file_object:
@@ -41,20 +42,19 @@ def getgroup(gid):
         fields = line.split(":")
         group_id = int(fields[2])
 
-        if group_id == gid:
+        if group_id == int(gid):
             found = True
-            groupline = fields
+            group = {
+                "name" : groupline[0],
+                "gid" : groupline[2],
+                "members" : groupline[3].split(',')
+            }
+            break
 
     file_object.close()
 
     if (found):
-        group = {
-            "name" : groupline[0],
-            "gid" : groupline[2],
-            "members" : groupline[3].split(',')
-        }
-
-        return response('group found', gid, 200)
+        return response('group found', group, 200)
     return response('group not found', gid, 404)
 
 @groups.route('/groups/query', methods=['GET'])
