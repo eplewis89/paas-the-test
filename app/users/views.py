@@ -16,7 +16,12 @@ def getusers():
     for line in file_object:
         line = line.strip()
         fields = line.split(":")
-        contents[fields[0]] = fields[-1]
+        contents["name"] = fields[0]
+        contents["uid"] = fields[2]
+        contents["gid"] = fields[3]
+        contents["comment"] = fields[4]
+        contents["home"] = fields[5]
+        contents["shell"] = fields[6]
     
     file_object.close()
 

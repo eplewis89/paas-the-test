@@ -16,7 +16,9 @@ def getgroups():
     for line in file_object:
         line = line.strip()
         fields = line.split(":")
-        contents[fields[0]] = fields[-1]
+        contents["name"] = fields[0]
+        contents["gid"] = fields[2]
+        contents["members"] = fields[3].split(',')
     
     file_object.close()
 
