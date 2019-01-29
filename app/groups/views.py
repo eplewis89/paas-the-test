@@ -11,7 +11,7 @@ file = "/etc/group"
 @groups.route('/groups/', methods=['GET'])
 def getgroups():
     file_object = open(file, 'r')
-    contents = []
+    group_contents = []
 
     for line in file_object:
         line = line.strip()
@@ -23,11 +23,11 @@ def getgroups():
             "members" : fields[3].split(',')
         }
 
-        contents.append(group)
+        group_contents.append(group)
 
     file_object.close()
 
-    return response('success', contents, 200)
+    return jsonify(group_contents)
 
 # Return a single group by group id from /etc/groups
 @groups.route('/groups/<gid>', methods=['GET'])
@@ -55,8 +55,8 @@ def getgroup(gid):
     file_object.close()
 
     if (found):
-        return response('group found', group, 200)
-        
+        return jsonify(group)
+
     return response('group not found', gid, 404)
 
 @groups.route('/groups/query', methods=['GET'])

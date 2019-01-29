@@ -11,7 +11,7 @@ file = "/etc/passwd"
 @users.route('/users/', methods=['GET'])
 def getusers():
     file_object = open(file, 'r')
-    contents = []
+    user_contents = []
 
     for line in file_object:
         line = line.strip()
@@ -26,11 +26,11 @@ def getusers():
             "shell" : fields[6]
         }
 
-        contents.append(user)
+        user_contents.append(user)
 
     file_object.close()
 
-    return response('success', contents, 200)
+    return jsonify(user_contents)
 
 # Return a single user by user id from /etc/passwd
 @users.route('/users/<uid>', methods=['GET'])
@@ -61,7 +61,7 @@ def getuser(uid):
     file_object.close()
 
     if (found):
-        return response('user found', user, 200)
+        return jsonify(user)
         
     return response('user not found', uid, 404)
 
