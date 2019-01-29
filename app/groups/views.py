@@ -5,7 +5,7 @@ from app.helpers import response
 groups = Blueprint('groups', __name__)
 
 # Declare the file location
-file = "/etc/groups"
+file = "/etc/group"
 
 # Return all the groups from /etc/groups
 @groups.route('/groups/', methods=['GET'])

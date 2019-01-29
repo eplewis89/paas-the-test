@@ -4,14 +4,23 @@ from app.helpers import response
 
 users = Blueprint('users', __name__)
 
+# Declare the file location
+file = "/etc/passwd"
+
+# Return all the users from /etc/users
 @users.route('/users/', methods=['GET'])
 def getusers():
-    """
-    Return all the users from /etc/users
-    :return:
-    """
+    file_object = open(file, 'r')
+    contents = {}
 
-    return response('success', '', 200)
+    for line in file_object:
+        line = line.strip()
+        fields = line.split(":")
+        contents[fields[0]] = fields[-1]
+    
+    file_object.close()
+
+    return response('success', contents, 200)
 
 @users.route('/users/<uid>', methods=['GET'])
 def getuser(uid):
