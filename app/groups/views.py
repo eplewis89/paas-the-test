@@ -45,10 +45,11 @@ def getgroup(gid):
         if group_id == int(gid):
             found = True
             group = {
-                "name" : groupline[0],
-                "gid" : groupline[2],
-                "members" : groupline[3].split(',')
+                "name" : fields[0],
+                "gid" : fields[2],
+                "members" : fields[3].split(',')
             }
+            
             break
 
     file_object.close()
