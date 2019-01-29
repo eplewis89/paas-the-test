@@ -11,15 +11,20 @@ file = "/etc/group"
 @groups.route('/groups/', methods=['GET'])
 def getgroups():
     file_object = open(file, 'r')
-    contents = {}
+    contents = []
 
     for line in file_object:
         line = line.strip()
         fields = line.split(":")
-        contents["name"] = fields[0]
-        contents["gid"] = fields[2]
-        contents["members"] = fields[3].split(',')
-    
+        
+        group = {
+            "name" : fields[0],
+            "gid" : fields[2],
+            "members" : fields[3].split(',')
+        }
+
+        contents.append(group)
+
     file_object.close()
 
     return response('success', contents, 200)

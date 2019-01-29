@@ -11,18 +11,23 @@ file = "/etc/passwd"
 @users.route('/users/', methods=['GET'])
 def getusers():
     file_object = open(file, 'r')
-    contents = {}
+    contents = []
 
     for line in file_object:
         line = line.strip()
         fields = line.split(":")
-        contents["name"] = fields[0]
-        contents["uid"] = fields[2]
-        contents["gid"] = fields[3]
-        contents["comment"] = fields[4]
-        contents["home"] = fields[5]
-        contents["shell"] = fields[6]
-    
+        
+        user = {
+            "name" : fields[0],
+            "uid" : fields[2],
+            "gid" : fields[3],
+            "comment" : fields[4],
+            "home" : fields[5],
+            "shell" : fields[6]
+        }
+
+        contents.append(user)
+
     file_object.close()
 
     return response('success', contents, 200)
