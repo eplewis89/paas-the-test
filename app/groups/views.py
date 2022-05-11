@@ -27,7 +27,10 @@ def getgroups():
 
     file_object.close()
 
-    return jsonify(group_contents)
+    if (len(group_contents) > 0):
+        return jsonify(group_contents)
+        
+    return response('no groups found', '', 404)
 
 # Return a single group by group id from /etc/groups
 @groups.route('/groups/<gid>', methods=['GET'])
@@ -67,8 +70,6 @@ def querygroups():
     """
     req = request.args.to_dict()
 
-    print(req)
-
     file_object = open(file, 'r')
     group_contents = []
 
@@ -103,4 +104,7 @@ def querygroups():
 
     file_object.close()
 
-    return jsonify(group_contents)
+    if (len(group_contents) > 0):
+        return jsonify(group_contents)
+        
+    return response('no groups found', req, 404)
